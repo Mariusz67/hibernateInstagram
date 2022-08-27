@@ -69,7 +69,6 @@ public class Main {
 		newUser.addAlbum(newAlbum);
 		newAlbum.addPhoto(newPhoto);
 
-
 		Album newAlbum2 = new Album();
 		newAlbum2.setAlbumName("wakacje");
 		newAlbum2.setDescription("Dębki 2018");

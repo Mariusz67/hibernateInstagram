@@ -1,0 +1,22 @@
+CREATE TABLE photos (id INTEGER PRIMARY KEY, photoName TEXT, photoDate TEXT, album_id BIGINT REFERENCES albums (id));
+INSERT INTO photos (id, photoName, photoDate, album_id) VALUES (1,'a107', '20200101', 1);
+INSERT INTO photos (id, photoName, photoDate, album_id) VALUES (2,'a105', '20200202', 1);
+INSERT INTO photos (id, photoName, photoDate, album_id) VALUES (3,'b104', '20200303', 2);
+INSERT INTO photos (id, photoName, photoDate, album_id) VALUES (4,'b109', '20200101', 2);
+INSERT INTO photos (id, photoName, photoDate, album_id) VALUES (5,'c112', '20200202', 3);
+INSERT INTO photos (id, photoName, photoDate, album_id) VALUES (6,'c108', '20200303', 3);
+
+CREATE TABLE albums (id INTEGER PRIMARY KEY, albumName TEXT, description TEXT, user_id BIGINT REFERENCES users (id));
+INSERT INTO albums (id, albumName, description, user_id) VALUES (1, 'wakacje', 'Bialogora 2020',1);
+INSERT INTO albums (id, albumName, description, user_id) VALUES (2, 'studniowka', 'studniowka Oliwii',2);
+INSERT INTO albums (id, albumName, description, user_id) VALUES (3, 'zdjecia szkolne', 'SP 2010-2015',2);
+
+CREATE TABLE users (id INTEGER PRIMARY KEY, userName TEXT, joinDate TEXT);
+INSERT INTO users (id, name, joinDate) VALUES (1, 'Mariusz', '20220115');
+INSERT INTO users (id, name, joinDate) VALUES (2, 'Oliwia', '20211206');
+
+CREATE TABLE users_photos (user_id BIGINT REFERENCES users (id), photo_id BIGINT REFERENCES photos (id), PRIMARY KEY (user_id, photo_id));
+INSERT INTO users_photos (user_id, photo_id) VALUES (1, 1);
+INSERT INTO users_photos (user_id, photo_id) VALUES (1, 2);
+INSERT INTO users_photos (user_id, photo_id) VALUES (2, 2);
+INSERT INTO users_photos (user_id, photo_id) VALUES (2, 4);
